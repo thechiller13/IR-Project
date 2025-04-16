@@ -39,17 +39,29 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                @if (!string.IsNullOrEmpty(item.Product.ImageUrl))
+                                                @if (item.Product != null)
                                                 {
-                                                    <img src="@item.Product.ImageUrl" alt="@item.Product.Name" class="img-thumbnail me-3" style="width:60px; height:60px; object-fit:cover;">
-                                                }                                                else
+                                                    if (!string.IsNullOrEmpty(item.Product.ImageUrl))
+                                                    {
+                                                        <img src="@item.Product.ImageUrl" alt="@item.Product.Name" class="img-thumbnail me-3" style="width:60px; height:60px; object-fit:cover;">
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-placeholder img-thumbnail me-3" style="width:60px; height:60px;"></div>
+                                                    }
+                                                    <div>
+                                                        <h6 class="mb-0">@item.Product.Name</h6>
+                                                        <small class="text-muted">@(item.Product.Category != null ? item.Product.Category.Name : "Uncategorized")</small>
+                                                    </div>
+                                                }
+                                                else
                                                 {
                                                     <div class="product-placeholder img-thumbnail me-3" style="width:60px; height:60px;"></div>
+                                                    <div>
+                                                        <h6 class="mb-0">Product Unavailable</h6>
+                                                        <small class="text-danger">This product no longer exists</small>
+                                                    </div>
                                                 }
-                                                <div>
-                                                    <h6 class="mb-0">@item.Product.Name</h6>
-                                                    <small class="text-muted">@item.Product.Category.Name</small>
-                                                </div>
                                             </div>
                                         </td>
                                         <td class="text-center align-middle">$@item.Product.Price.ToString("0.00")</td>
@@ -81,7 +93,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 mt-4 mt-lg-0">
                 <div class="card order-summary">
                     <div class="card-header bg-transparent">
