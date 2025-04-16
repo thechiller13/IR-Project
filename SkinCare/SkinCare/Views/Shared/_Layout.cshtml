@@ -83,12 +83,14 @@
                             </li>
                         }
                     </ul>
-                    
-                    <div class="d-none d-lg-flex align-items-center">
-                        <form class="d-flex me-3" asp-controller="Products" asp-action="Search">
-                            <input class="form-control me-2" type="search" name="query" placeholder="Search..." aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
-                        </form>
+                      <div class="d-none d-lg-flex align-items-center">
+                        <div class="search-container position-relative me-3">
+                            <form class="d-flex" asp-controller="Products" asp-action="Search" id="searchForm">
+                                <input id="searchInput" class="form-control me-2" type="search" name="query" placeholder="Search products..." aria-label="Search" autocomplete="off">
+                                <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                            </form>
+                            <div id="searchSuggestions" class="search-suggestions"></div>
+                        </div>
                         
                         <a asp-controller="Cart" asp-action="Index" class="me-3 position-relative cart-icon">
                             <i class="bi bi-cart fs-4"></i>

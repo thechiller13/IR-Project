@@ -77,6 +77,12 @@ namespace SkinCare.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("User");
+            ModelState.Remove("City");
+            ModelState.Remove("UserId");
+            ModelState.Remove("Country");
+            ModelState.Remove("PostalCode");
+            ModelState.Remove("ShippingAddress");
             if (ModelState.IsValid)
             {
                 try

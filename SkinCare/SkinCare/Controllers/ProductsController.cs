@@ -92,5 +92,29 @@ namespace SkinCare.Controllers
                 
             return View(products);
         }
+        
+        // GET: Products/GetSearchSuggestions
+        [AllowAnonymous] // Allow anonymous access for search suggestions
+        public async Task<IActionResult> GetSearchSuggestions(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query) || query.Length < 2)
+            {
+                return Json(new string[0]);
+            }
+
+            var products = await _unitOfWork.GetAllProductsAsync();
+            
+            // Get only products that contain the query in their name
+            // Limit to active products and take maximum 10 suggestions for performance
+            var suggestions = products
+                .Where(p => p.IsActive && 
+                       p.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
+                .Select(p => p.Name)
+                .Distinct()
+                .Take(10)
+                .ToList();
+                
+            return Json(suggestions);
+        }
     }
 }
