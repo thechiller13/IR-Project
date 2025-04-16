@@ -1,0 +1,73 @@
+@model SkinCare.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container py-4">
+    <div class="admin-section">
+        <h1 class="h3 mb-4">Product Details</h1>
+        
+        <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" class="img-fluid rounded" style="max-height: 300px;" alt="@Model.Name" />
+                }
+                else
+                {
+                    <div class="product-placeholder img-fluid rounded" style="max-height: 300px; height: 300px; width: 100%;"></div>
+                }
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Name:</div>
+                            <div class="col-md-9">@Model.Name</div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Category:</div>
+                            <div class="col-md-9">@Model.Category.Name</div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Price:</div>
+                            <div class="col-md-9">$@Model.Price.ToString("0.00")</div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Stock:</div>
+                            <div class="col-md-9">@Model.Stock</div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Status:</div>
+                            <div class="col-md-9">
+                                @if (Model.IsActive)
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Inactive</span>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-3 fw-bold">Description:</div>
+                            <div class="col-md-9">@Model.Description</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

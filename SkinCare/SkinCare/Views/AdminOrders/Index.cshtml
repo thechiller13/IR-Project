@@ -1,0 +1,99 @@
+@model IEnumerable<SkinCare.Models.Order>
+@{
+    ViewData["Title"] = "Admin - Orders";
+}
+
+<div class="container py-5">
+    <div class="admin-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="section-title mb-0">Order Management</h1>
+            
+            <div class="d-flex">
+                <div class="dropdown me-2">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filter by Status
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                        <li><a class="dropdown-item" asp-action="Index">All Orders</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-status="Pending">Pending</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-status="Processing">Processing</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-status="Shipped">Shipped</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-status="Delivered">Delivered</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-status="Cancelled">Cancelled</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort by
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-sort="date_desc">Newest First</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-sort="date_asc">Oldest First</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-sort="total_desc">Highest Total</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-sort="total_asc">Lowest Total</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>@order.Id</td>
+                            <td>@order.OrderDate.ToString("MMM dd, yyyy")</td>
+                            <td>@order.User.Email</td>
+                            <td>$@order.TotalAmount.ToString("0.00")</td>
+                            <td>
+                                @switch (order.Status)
+                                {
+                                    case OrderStatus.Pending:
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                        break;
+                                    case OrderStatus.Processing:
+                                        <span class="badge bg-info">Processing</span>
+                                        break;
+                                    case OrderStatus.Shipped:
+                                        <span class="badge bg-primary">Shipped</span>
+                                        break;
+                                    case OrderStatus.Delivered:
+                                        <span class="badge bg-success">Delivered</span>
+                                        break;
+                                    case OrderStatus.Cancelled:
+                                        <span class="badge bg-danger">Cancelled</span>
+                                        break;
+                                    default:
+                                        <span class="badge bg-secondary">Unknown</span>
+                                        break;
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-info">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

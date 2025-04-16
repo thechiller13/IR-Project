@@ -1,0 +1,105 @@
+@model SkinCare.Models.Product
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="container py-5">
+    <div class="admin-section">
+        <h1 class="section-title mb-4">Create New Product</h1>
+
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Product Name</label>
+                        <input asp-for="Name" class="form-control" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="Price" class="form-label">Price ($)</label>
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" required />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Stock" class="form-label">Stock</label>
+                            <input asp-for="Stock" class="form-control" type="number" min="0" required />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+                    </div>
+                      <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="@ViewData["CategoryId"] as SelectList" required>
+                            <option value="">-- Select Category --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input asp-for="IsActive" class="form-check-input" type="checkbox" checked />
+                        <label asp-for="IsActive" class="form-check-label">Active (available for purchase)</label>
+                    </div>
+                </div>
+
+                <input type="hidden" asp-for="ImageUrl" />
+
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="imageFile" class="form-label">Product Image</label>
+                        <input id="imageFile" name="imageFile" class="form-control" type="file" accept="image/*" />
+                        <div class="form-text">Recommended size: 800x800 pixels</div>
+                    </div>
+                    <div class="image-preview-container mt-3 text-center">
+                        <img id="imagePreview" src="@(Model?.ImageUrl ?? "")" class="img-fluid img-thumbnail" style="max-height: 200px; width: auto; @(string.IsNullOrEmpty(Model?.ImageUrl) ? "display: none;" : "")">
+                        <div id="imagePlaceholder" class="product-placeholder img-fluid img-thumbnail" style="max-height: 200px; width: 200px; @(!string.IsNullOrEmpty(Model?.ImageUrl) ? "display: none;" : "")"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Create Product
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Image preview functionality
+        document.getElementById('imageFile').addEventListener('change', function(e) {
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                    imagePreview.style.display = 'inline-block';
+                    imagePlaceholder.style.display = 'none';
+
+                    // Update the hidden ImageUrl field with the base64 data
+                    document.getElementById('ImageUrl').value = event.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            } else {
+                imagePreview.style.display = 'none';
+                imagePlaceholder.style.display = 'block';
+                document.getElementById('ImageUrl').value = '';
+            }
+        });
+    </script>
+}

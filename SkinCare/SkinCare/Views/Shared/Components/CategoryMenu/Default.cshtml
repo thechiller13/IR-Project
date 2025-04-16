@@ -1,0 +1,6 @@
+@model IEnumerable<SkinCare.Models.Category>
+
+@foreach (var category in Model)
+{
+    <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-categoryId="@category.Id">@category.Name</a></li>
+}

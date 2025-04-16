@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4">Discover Your Skin's Potential</h1>
+                <p class="lead mb-4">Premium skincare products formulated with natural ingredients that nourish, protect, and rejuvenate your skin for a radiant complexion.</p>
+                <div class="d-flex gap-3">
+                    <a href="/Products" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-bag me-2"></i>Shop Now
+                    </a>
+                    <a href="/Home/About" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-info-circle me-2"></i>About Us
+                    </a>
+                </div>
+                <div class="mt-5">
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="feature-item text-center">
+                            <i class="bi bi-award fs-2 text-primary mb-2"></i>
+                            <p class="mb-0 fw-medium">Quality<br>Ingredients</p>
+                        </div>
+                        <div class="feature-item text-center">
+                            <i class="bi bi-heart fs-2 text-primary mb-2"></i>
+                            <p class="mb-0 fw-medium">Cruelty<br>Free</p>
+                        </div>
+                        <div class="feature-item text-center">
+                            <i class="bi bi-recycle fs-2 text-primary mb-2"></i>
+                            <p class="mb-0 fw-medium">Eco<br>Friendly</p>
+                        </div>
+                        <div class="feature-item text-center">
+                            <i class="bi bi-shield-check fs-2 text-primary mb-2"></i>
+                            <p class="mb-0 fw-medium">Dermatologist<br>Tested</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="/images/products/hero-image.jpg" alt="Skincare Products" class="img-fluid rounded-3 shadow" onerror="this.onerror=null; this.classList.add('product-placeholder');" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-products py-5 bg-light">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="display-6 fw-bold">Best Sellers</h2>
+            <p class="text-muted">Our most loved products, trusted by customers worldwide</p>
+        </div>
+        <div class="row g-4">
+            <!-- This would normally be populated dynamically from the database -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="product-placeholder card-img-top"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Hydrating Serum</h5>
+                        <p class="card-text text-muted">Intense hydration for all skin types</p>
+                        <p class="fw-bold text-primary mb-0">$24.99</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="/Products" class="btn btn-outline-primary d-block">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="product-placeholder card-img-top"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Vitamin C Cream</h5>
+                        <p class="card-text text-muted">Brighten and protect your skin</p>
+                        <p class="fw-bold text-primary mb-0">$29.99</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="/Products" class="btn btn-outline-primary d-block">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="product-placeholder card-img-top"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Night Repair Mask</h5>
+                        <p class="card-text text-muted">Rejuvenate while you sleep</p>
+                        <p class="fw-bold text-primary mb-0">$34.99</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="/Products" class="btn btn-outline-primary d-block">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="product-placeholder card-img-top"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Exfoliating Scrub</h5>
+                        <p class="card-text text-muted">Gentle exfoliation for smooth skin</p>
+                        <p class="fw-bold text-primary mb-0">$19.99</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="/Products" class="btn btn-outline-primary d-block">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

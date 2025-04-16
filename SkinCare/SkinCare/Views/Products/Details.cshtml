@@ -1,0 +1,78 @@
+@model SkinCare.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Shop</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index" asp-route-categoryId="@Model.CategoryId">@Model.Category.Name</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="product-details-img img-fluid" alt="@Model.Name">
+            }            else
+            {
+                <div class="product-placeholder product-details-img"></div>
+            }
+        </div>
+        <div class="col-md-6">
+            <span class="category-badge">@Model.Category.Name</span>
+            <h1 class="mb-3">@Model.Name</h1>
+            <div class="mb-4">
+                <span class="product-price h3">$@Model.Price.ToString("0.00")</span>
+            </div>
+            <p class="mb-4">@Model.Description</p>
+            
+            @if (Model.Stock > 0)
+            {
+                <div class="mb-4">
+                    <span class="badge bg-success">In Stock (@Model.Stock available)</span>
+                </div>
+                
+                <form asp-controller="Cart" asp-action="AddToCart" method="post" class="d-flex gap-3 mb-4">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <div class="d-flex align-items-center">
+                        <label for="quantity" class="me-2">Quantity:</label>
+                        <select name="quantity" id="quantity" class="form-select" style="width: 80px;">
+                            @for (int i = 1; i <= Math.Min(Model.Stock, 10); i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-cart-plus me-2"></i> Add to Cart
+                    </button>
+                </form>
+            }
+            else
+            {
+                <div class="mb-4">
+                    <span class="badge bg-danger">Out of Stock</span>
+                </div>
+                <button type="button" class="btn btn-secondary" disabled>
+                    <i class="bi bi-cart-plus me-2"></i> Out of Stock
+                </button>
+            }
+            
+            <div class="mt-4">
+                <h5 class="mb-3">Product Details</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Premium quality skincare product</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Made with natural ingredients</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Dermatologically tested</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Free of parabens and harmful chemicals</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

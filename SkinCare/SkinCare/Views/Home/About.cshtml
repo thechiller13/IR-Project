@@ -1,0 +1,136 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">About SKINCARE</h1>
+            <p class="lead mb-4">We're on a mission to provide high-quality skincare products that are effective, affordable, and environmentally conscious.</p>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="bi bi-heart-fill text-primary"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5 align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="/images/about/our-story.jpg" alt="Our Story" class="img-fluid rounded-3 shadow-sm" onerror="this.onerror=null; this.classList.add('product-placeholder');">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="h3 mb-4">Our Story</h2>
+            <p>Founded in 2020, SKINCARE was born from the belief that everyone deserves access to high-quality skincare without compromising on ingredients or ethics. Our founder, Sarah Johnson, struggled for years to find products that were both effective for her sensitive skin and aligned with her values of sustainability and cruelty-free practices.</p>
+            <p>What started as a small collection of handcrafted formulations has grown into a comprehensive range of skincare solutions for all skin types and concerns. We remain committed to our founding principles of quality, transparency, and sustainability.</p>
+        </div>
+    </div>
+
+    <div class="row mb-5 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="/images/about/our-ingredients.jpg" alt="Our Ingredients" class="img-fluid rounded-3 shadow-sm" onerror="this.onerror=null; this.classList.add('product-placeholder');">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="h3 mb-4">Our Ingredients</h2>
+            <p>We believe what you put on your skin matters. That's why we carefully source the highest quality ingredients from trusted suppliers around the world. Our formulations combine proven active ingredients with botanical extracts to create products that deliver visible results.</p>
+            <p>We are committed to transparency and provide detailed information about each ingredient in our products. We never use parabens, sulfates, phthalates, or artificial fragrances that can irritate sensitive skin.</p>
+        </div>
+    </div>
+
+    <div class="row mb-5 align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="/images/about/our-values.jpg" alt="Our Values" class="img-fluid rounded-3 shadow-sm" onerror="this.onerror=null; this.classList.add('product-placeholder');">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="h3 mb-4">Our Values</h2>
+            <p>At SKINCARE, we're guided by a set of core values that inform everything we do:</p>
+            <ul class="list-unstyled">
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Sustainability</strong>: We use recyclable packaging and work with manufacturers who share our commitment to reducing environmental impact.</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Cruelty-Free</strong>: We never test our products on animals and only work with cruelty-free suppliers.</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Inclusivity</strong>: We create products for all skin types, tones, and concerns, believing everyone deserves healthy skin.</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Transparency</strong>: We are open about our ingredients, sourcing, and manufacturing processes.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row pt-4">
+        <div class="col-lg-10 mx-auto text-center">
+            <h2 class="h3 mb-4">Our Team</h2>
+            <p class="mb-5">We're a dedicated team of skincare enthusiasts, dermatologists, and sustainability advocates working together to create products we're proud of.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card team-card h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar mb-3">
+                                <img src="/images/team/team-1.jpg" alt="Sarah Johnson" class="rounded-circle img-fluid" onerror="this.onerror=null; this.classList.add('product-placeholder');" style="width: 120px; height: 120px; object-fit: cover;">
+                            </div>
+                            <h5 class="card-title">Sarah Johnson</h5>
+                            <p class="text-muted">Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card team-card h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar mb-3">
+                                <img src="/images/team/team-2.jpg" alt="Dr. Michael Lee" class="rounded-circle img-fluid" onerror="this.onerror=null; this.classList.add('product-placeholder');" style="width: 120px; height: 120px; object-fit: cover;">
+                            </div>
+                            <h5 class="card-title">Dr. Michael Lee</h5>
+                            <p class="text-muted">Lead Dermatologist</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card team-card h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar mb-3">
+                                <img src="/images/team/team-3.jpg" alt="Emma Rodriguez" class="rounded-circle img-fluid" onerror="this.onerror=null; this.classList.add('product-placeholder');" style="width: 120px; height: 120px; object-fit: cover;">
+                            </div>
+                            <h5 class="card-title">Emma Rodriguez</h5>
+                            <p class="text-muted">Product Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .divider-custom {
+            margin: 1.25rem 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .divider-custom-line {
+            width: 100%;
+            max-width: 7rem;
+            height: 0.25rem;
+            background-color: #dee2e6;
+            border-radius: 1rem;
+        }
+
+        .divider-custom-icon {
+            margin: 0 1rem;
+        }
+
+        .team-card {
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+    </style>
+}

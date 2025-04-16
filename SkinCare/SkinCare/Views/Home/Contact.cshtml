@@ -1,0 +1,221 @@
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-3">Get in Touch</h1>
+            <p class="lead mb-4">Have questions or feedback? We'd love to hear from you!</p>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="bi bi-envelope-heart-fill text-primary"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-lg-5">
+                    <h2 class="h4 mb-4">Send us a message</h2>
+                    <form id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" placeholder="Your name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="email" placeholder="Your email">
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                            <label for="subject">Subject</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" style="height: 150px" placeholder="Your message"></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                <i class="bi bi-send me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="col-lg-5">
+            <h2 class="h4 mb-4">Contact Information</h2>
+            
+            <div class="contact-info mb-4">
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-geo-alt-fill text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Our Location</h6>
+                                <p class="mb-0">123 Skincare Avenue<br>Beauty District, NY 10001<br>United States</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-telephone-fill text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Phone Number</h6>
+                                <p class="mb-0">Customer Service: +1 (555) 123-4567<br>Support: +1 (555) 987-6543</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-envelope-fill text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Email Address</h6>
+                                <p class="mb-0">info@skincare.com<br>support@skincare.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-clock-fill text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Working Hours</h6>
+                                <p class="mb-0">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h5 class="mt-5 mb-3">Follow Us</h5>
+            <div class="social-links">
+                <a href="#" class="btn btn-outline-primary rounded-circle me-2">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="btn btn-outline-primary rounded-circle me-2">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="btn btn-outline-primary rounded-circle me-2">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="#" class="btn btn-outline-primary rounded-circle me-2">
+                    <i class="bi bi-pinterest"></i>
+                </a>
+                <a href="#" class="btn btn-outline-primary rounded-circle">
+                    <i class="bi bi-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Map -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="ratio ratio-21x9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.982960792056!2d-73.98784542424!3d40.74844793646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9aeb1c6b5%3A0x35b1cfbc89a6097f!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1680123456789!5m2!1sen!2sus" 
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Simple form validation example
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the form submission with AJAX
+            
+            // For demo purposes, show success message
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
+            
+            setTimeout(function() {
+                form.innerHTML = '<div class="text-center py-5"><div class="mb-4"><i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i></div><h3>Thank You!</h3><p class="lead">Your message has been sent successfully.</p><p>We\'ll get back to you shortly.</p></div>';
+            }, 1500);
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .divider-custom {
+            margin: 1.25rem 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .divider-custom-line {
+            width: 100%;
+            max-width: 7rem;
+            height: 0.25rem;
+            background-color: #dee2e6;
+            border-radius: 1rem;
+        }
+
+        .divider-custom-icon {
+            margin: 0 1rem;
+        }
+
+        .rounded-4 {
+            border-radius: 0.75rem !important;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem);
+        }
+        
+        .social-links .btn {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            line-height: 38px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links .btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+}

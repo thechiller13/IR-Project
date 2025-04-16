@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SkinCare</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SkinCare.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow py-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SKIN<span class="text-primary">CARE</span></a>
+                <div class="d-flex d-lg-none ms-auto me-2">
+                    <a asp-controller="Cart" asp-action="Index" class="me-3 position-relative cart-icon">
+                        <i class="bi bi-cart fs-4"></i>
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Shop</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                                @await Component.InvokeAsync("CategoryMenu")
+                            </ul>
+                        </li>
+                        
+                        <!-- More dropdown for smaller screens -->
+                        <li class="nav-item dropdown d-lg-none">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><h6 class="dropdown-header">Admin</h6></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminProducts" asp-action="Index">Products</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminCategories" asp-action="Index">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminOrders" asp-action="Index">Orders</a></li>
+                                }
+                            </ul>
+                        </li>
+                        
+                        <!-- Visible only on larger screens -->
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        
+                        <!-- Admin dropdown for larger screens -->
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown d-none d-lg-block">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-controller="AdminProducts" asp-action="Index">Products</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminCategories" asp-action="Index">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminOrders" asp-action="Index">Orders</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    
+                    <div class="d-none d-lg-flex align-items-center">
+                        <form class="d-flex me-3" asp-controller="Products" asp-action="Search">
+                            <input class="form-control me-2" type="search" name="query" placeholder="Search..." aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                        
+                        <a asp-controller="Cart" asp-action="Index" class="me-3 position-relative cart-icon">
+                            <i class="bi bi-cart fs-4"></i>
+                            @await Component.InvokeAsync("ShoppingCartSummary")
+                        </a>
+                        
+                        <partial name="_LoginPartial" />
+                        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="dropdown ms-2">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-controller="AdminProducts" asp-action="Index">Products</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminCategories" asp-action="Index">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AdminOrders" asp-action="Index">Orders</a></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @if (ViewData["ShowHero"] as bool? == true || Context.Request.Path.Value == "/" || Context.Request.Path.Value == "/Home" || Context.Request.Path.Value == "/Home/Index")
+    {
+        <div class="hero-section text-center">
+            <div class="container">
+                <h1 class="display-4 mb-4">The Natural Beauty Collection</h1>
+                <p class="lead mb-4">Premium skincare products made with natural ingredients</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-primary btn-lg">Shop Now</a>
+            </div>
+        </div>
+    }
+
+    <div class="container pb-5">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">SkinCare</h5>
+                    <p>We provide premium skincare products made with natural ingredients that nourish and rejuvenate your skin.</p>
+                    <div class="d-flex">
+                        <a href="#" class="me-2 text-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="me-2 text-white"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="me-2 text-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-pinterest fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-uppercase mb-4">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a asp-controller="Products" asp-action="Index" class="text-white text-decoration-none">All Products</a></li>
+                        <li class="mb-2"><a asp-controller="Products" asp-action="Featured" class="text-white text-decoration-none">Featured</a></li>
+                        <li class="mb-2"><a asp-controller="Products" asp-action="BestSellers" class="text-white text-decoration-none">Best Sellers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-uppercase mb-4">Help</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a asp-controller="Home" asp-action="FAQ" class="text-white text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Shipping" class="text-white text-decoration-none">Shipping</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Returns" class="text-white text-decoration-none">Returns</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Contact" class="text-white text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-uppercase mb-4">Newsletter</h6>
+                    <p class="mb-3">Subscribe to our newsletter for the latest products and offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="small mb-0 text-white">&copy; @DateTime.Now.Year - SkinCare - All rights reserved</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="small mb-0 text-white">
+                            <a asp-controller="Home" asp-action="Privacy" class="text-white">Privacy Policy</a> | 
+                            <a asp-controller="Home" asp-action="Terms" class="text-white">Terms of Service</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
